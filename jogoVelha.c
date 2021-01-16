@@ -8,25 +8,19 @@
   o possivel empate pelo numero de jogadas ate o momento da verificação
 */
 int verificarVitoria(char tabela [3][3], char simbolo, int numeroJogadas){
-    if ((tabela [0][0]) == (tabela [0][1]) && (tabela [0][0]) == (tabela [0][2])){
-        printf(" O jogador que utilizou o simbolo %c ganhou!!!!\n\n", simbolo);
-        return 0;
-    } else if ((tabela [1][0]) == (tabela [1][1]) && (tabela [1][0]) == (tabela [1][2])){
-        printf(" O jogador que utilizou o simbolo %c ganhou!!!!\n\n", simbolo);
-        return 0;
-    } else if ((tabela [2][0]) == (tabela [2][1]) && (tabela [2][0]) == (tabela [2][2])){
-        printf(" O jogador que utilizou o simbolo %c ganhou!!!!\n\n", simbolo);
-        return 0;
-    } else if ((tabela [0][0]) == (tabela [1][0]) && (tabela [0][0]) == (tabela [2][0])){
-        printf(" O jogador que utilizou o simbolo %c ganhou!!!!\n\n", simbolo);
-        return 0;
-    } else if ((tabela [0][1]) == (tabela [1][1]) && (tabela [0][1]) == (tabela [2][1])){
-        printf(" O jogador que utilizou o simbolo %c ganhou!!!!\n\n", simbolo);
-        return 0;
-    } else if ((tabela [0][2]) == (tabela [1][2]) && (tabela [0][2]) == (tabela [2][2])){
-        printf(" O jogador que utilizou o simbolo %c ganhou!!!!\n\n", simbolo);
-        return 0;
-    } else if ((tabela [0][0]) == (tabela [1][1]) && (tabela [0][0]) == (tabela [2][2])){
+    for (register int i = 0; i <3; i++){
+         if ((tabela [i][0]) == (tabela [i][1]) && (tabela [i][0]) == (tabela [i][2])){
+            printf(" O jogador que utilizou o simbolo %c ganhou!!!!\n\n", simbolo);
+            return 0;
+        }
+    }
+     for (register int j = 0; j <3; j++){
+         if ((tabela [0][j]) == (tabela [1][j]) && (tabela [0][j]) == (tabela [2][j])){
+            printf(" O jogador que utilizou o simbolo %c ganhou!!!!\n\n", simbolo);
+            return 0;
+        }
+    }
+    if ((tabela [0][0]) == (tabela [1][1]) && (tabela [0][0]) == (tabela [2][2])){
         printf(" O jogador que utilizou o simbolo %c ganhou!!!!\n\n", simbolo);
         return 0;
     } else if ((tabela [0][2]) == (tabela [1][1]) && (tabela [0][2]) == (tabela [2][0])){
@@ -84,7 +78,7 @@ int main (){
         printf("\n Qual posicao voce quer jogar? ");
         scanf("%c", &posicao);
         printf("\n");
-        while ((getchar()) != '\n');
+        while ((getchar()) != '\n'); //buffer cleaning
         switch (posicao){  
             case '1':
                if (verificarPosicao(tabela [0][2])){
@@ -154,8 +148,6 @@ int main (){
                 simbolo = 'X';
             }
         }
-        
-           
     }
     mostrarTabela(tabela);
 }
